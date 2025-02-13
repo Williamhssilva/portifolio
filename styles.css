@@ -68,7 +68,6 @@ nav ul li a:hover {
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
     transition: transform 0.3s;
     position: relative;
     z-index: 1;
@@ -117,13 +116,14 @@ section img {
     overflow: hidden;
     width: 100%;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0;
 }
 
 .carousel-track-container {
     overflow: hidden;
     width: 100%;
     position: relative;
+    padding: 20px 0;
 }
 
 .carousel-track {
@@ -208,9 +208,38 @@ section img {
     right: 10px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+    .carousel {
+        padding: 0;
+    }
+
     .carousel-card {
-        flex: 0 0 80%; /* Ajusta a largura em dispositivos móveis */
+        flex: 0 0 85%;
+        margin: 0 7.5%;
+        padding: 15px;
+    }
+
+    .carousel-track {
+        padding: 0 7.5%;
+    }
+
+    .carousel-card.active {
+        transform: scale(1.02);
+    }
+
+    #projects.futuristic-section {
+        padding: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-card {
+        flex: 0 0 90%;
+        margin: 0 5%;
+    }
+
+    .carousel-track {
+        padding: 0 5%;
     }
 }
 
