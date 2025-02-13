@@ -39,13 +39,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const cards = Array.from(track.children);
     const container = document.querySelector('.carousel-track-container');
     
-    let currentIndex = 0;
+    let currentIndex = 1; // Começamos do índice 1 (primeiro card real)
     let startPos = 0;
     let currentTranslate = 0;
     let prevTranslate = 0;
     let isDragging = false;
 
-    // Função para calcular a posição exata do card
     function getPositionByIndex(index) {
         const cardWidth = cards[0].offsetWidth;
         const containerWidth = container.offsetWidth;
@@ -54,14 +53,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return -(index * (cardWidth + margin * 2)) + offset;
     }
 
-    // Função para atualizar a posição do carrossel
     function updateCarousel(instant = false) {
         currentTranslate = getPositionByIndex(currentIndex);
         
         track.style.transition = instant ? 'none' : 'transform 0.3s ease-in-out';
         track.style.transform = `translateX(${currentTranslate}px)`;
         
-        // Atualiza classes active
         cards.forEach((card, index) => {
             card.classList.remove('active');
             if (index === currentIndex) {
@@ -70,7 +67,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Event listeners para touch e mouse com opção passive: false
+    // Função para verificar e ajustar o loop infinito
+    function checkIndex() {
+        track.style.transition = 'none';
+        if (currentIndex === cards.length - 1) {
+            currentIndex = 1;
+            updateCarousel(true);
+        }
+        if (currentIndex === 0) {
+            currentIndex = cards.length - 2;
+            updateCarousel(true);
+        }
+    }
+
+    track.addEventListener('transitionend', checkIndex);
+
     cards.forEach((card, index) => {
         card.addEventListener('mousedown', startDragging, { passive: false });
         card.addEventListener('touchstart', startDragging, { passive: false });
@@ -106,9 +117,9 @@ document.addEventListener('DOMContentLoaded', () => {
         track.style.transition = 'transform 0.3s ease-in-out';
         
         if (Math.abs(movedBy) > 100) {
-            if (movedBy > 0 && currentIndex > 0) {
+            if (movedBy > 0) {
                 currentIndex--;
-            } else if (movedBy < 0 && currentIndex < cards.length - 1) {
+            } else {
                 currentIndex++;
             }
         }
@@ -119,7 +130,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicialização
     updateCarousel(true);
 
-    // Atualiza o carrossel quando a janela é redimensionada
     let resizeTimeout;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
