@@ -2,7 +2,6 @@ const translations = {
     'pt-br': {
         welcome: 'Bem-vindo ao Meu Portfólio',
         about: 'Sobre Mim',
-        projects: 'Projetos',
         contact: 'Contato',
         project1: 'Projeto 1',
         project1Description: 'Descrição do projeto 1.',
@@ -14,7 +13,6 @@ const translations = {
     'en-us': {
         welcome: 'Welcome to My Portfolio',
         about: 'About Me',
-        projects: 'Projects',
         contact: 'Contact',
         project1: 'Project 1',
         project1Description: 'Description of project 1.',
