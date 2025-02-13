@@ -8,7 +8,6 @@ const translations = {
         project2: 'Projeto 2',
         project2Description: 'Descrição do projeto 2.',
         viewOnGitHub: 'Ver no GitHub',
-        // Adicione mais traduções conforme necessário
     },
     'en-us': {
         welcome: 'Welcome to My Portfolio',
@@ -19,7 +18,6 @@ const translations = {
         project2: 'Project 2',
         project2Description: 'Description of project 2.',
         viewOnGitHub: 'View on GitHub',
-        // Adicione mais traduções conforme necessário
     }
 };
 
