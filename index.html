@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portfólio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="content-wrapper">
+        <header class="futuristic-header">
+            <h1>Bem-vindo ao Meu Portfólio</h1>
+            <nav>
+                <ul>
+                    <li><a href="#about">Sobre Mim</a></li>
+                    <li><a href="#projects">Projetos</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="language-switcher">
+                <button onclick="setLanguage('pt-br')">
+                    <img src="https://flagicons.lipis.dev/flags/4x3/br.svg" alt="Português" class="flag-icon">
+                </button>
+                <button onclick="setLanguage('en-us')">
+                    <img src="https://flagicons.lipis.dev/flags/4x3/us.svg" alt="English" class="flag-icon">
+                </button>
+            </div>
+        </header>
+        <section id="about" class="futuristic-section">
+            <h2>Sobre Mim</h2>
+            <img src="https://placehold.jp/150x150.png" alt="Minha Foto" class="profile-pic">
+            <p>Breve descrição sobre você e suas habilidades.</p>
+        </section>
+        <section id="projects" class="futuristic-section">
+            <div class="carousel">
+                <div class="carousel-track-container">
+                    <ul class="carousel-track">
+                        <li class="carousel-card">
+                            <h3>Projeto 1</h3>
+                            <img src="https://placehold.jp/300x200.png" alt="Imagem do Projeto 1">
+                            <p>Descrição do projeto 1.</p>
+                            <a href="https://github.com/seu-usuario/projeto1">Ver no GitHub</a>
+                        </li>
+                        <li class="carousel-card">
+                            <h3>Projeto 2</h3>
+                            <img src="https://placehold.jp/300x200.png" alt="Imagem do Projeto 2">
+                            <p>Descrição do projeto 2.</p>
+                            <a href="https://github.com/seu-usuario/projeto2">Ver no GitHub</a>
+                        </li>
+                        <!-- Adicione mais cards de projeto aqui -->
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="contact" class="futuristic-section">
+            <h2>Contato</h2>
+            <form>
+                <input type="text" placeholder="Seu Nome" required>
+                <input type="email" placeholder="Seu Email" required>
+                <textarea placeholder="Sua Mensagem" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </div>
+    <footer class="futuristic-footer">
+        <p>&copy; 2023 Seu Nome</p>
+    </footer>
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
