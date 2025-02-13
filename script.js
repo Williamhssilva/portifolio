@@ -37,102 +37,94 @@ function setLanguage(language) {
 document.addEventListener('DOMContentLoaded', () => {
     const track = document.querySelector('.carousel-track');
     const cards = Array.from(track.children);
-    let cardWidth = cards[0].getBoundingClientRect().width;
-
-    const setCardPosition = (card, index) => {
-        card.style.left = cardWidth * index + 'px';
-    };
-    cards.forEach(setCardPosition);
-
-    let isDragging = false;
+    const container = document.querySelector('.carousel-track-container');
+    
+    let currentIndex = 0;
     let startPos = 0;
     let currentTranslate = 0;
     let prevTranslate = 0;
-    let animationID;
-    let currentIndex = 0;
+    let isDragging = false;
 
+    // Função para calcular a posição exata do card
+    function getPositionByIndex(index) {
+        const cardWidth = cards[0].offsetWidth;
+        const containerWidth = container.offsetWidth;
+        const margin = parseInt(window.getComputedStyle(cards[0]).marginRight);
+        const offset = (containerWidth - cardWidth) / 2;
+        return -(index * (cardWidth + margin * 2)) + offset;
+    }
+
+    // Função para atualizar a posição do carrossel
+    function updateCarousel(instant = false) {
+        currentTranslate = getPositionByIndex(currentIndex);
+        
+        track.style.transition = instant ? 'none' : 'transform 0.3s ease-in-out';
+        track.style.transform = `translateX(${currentTranslate}px)`;
+        
+        // Atualiza classes active
+        cards.forEach((card, index) => {
+            card.classList.remove('active');
+            if (index === currentIndex) {
+                card.classList.add('active');
+            }
+        });
+    }
+
+    // Event listeners para touch e mouse com opção passive: false
     cards.forEach((card, index) => {
-        const cardImage = card.querySelector('img');
-        cardImage.addEventListener('dragstart', (e) => e.preventDefault());
-
-        card.addEventListener('touchstart', touchStart(index));
-        card.addEventListener('touchend', touchEnd);
-        card.addEventListener('touchmove', touchMove);
-
-        card.addEventListener('mousedown', touchStart(index));
-        card.addEventListener('mouseup', touchEnd);
-        card.addEventListener('mouseleave', touchEnd);
-        card.addEventListener('mousemove', touchMove);
+        card.addEventListener('mousedown', startDragging, { passive: false });
+        card.addEventListener('touchstart', startDragging, { passive: false });
+        card.addEventListener('dragstart', (e) => e.preventDefault());
     });
 
-    function touchStart(index) {
-        return function(event) {
-            currentIndex = index;
-            startPos = getPositionX(event);
-            isDragging = true;
-            animationID = requestAnimationFrame(animation);
-            track.style.cursor = 'grabbing';
-        }
+    document.addEventListener('mousemove', drag, { passive: false });
+    document.addEventListener('touchmove', drag, { passive: false });
+    document.addEventListener('mouseup', endDragging);
+    document.addEventListener('touchend', endDragging);
+
+    function startDragging(e) {
+        isDragging = true;
+        startPos = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+        prevTranslate = currentTranslate;
+        track.style.transition = 'none';
     }
 
-    function touchEnd() {
-        isDragging = false;
-        cancelAnimationFrame(animationID);
-
-        const movedBy = currentTranslate - prevTranslate;
-
-        if (movedBy < -100) {
-            if (currentIndex < cards.length - 1) {
-                currentIndex += 1;
-            } else {
-                currentIndex = 0; // Reinicia no primeiro card
-            }
-        }
-
-        if (movedBy > 100) {
-            if (currentIndex > 0) {
-                currentIndex -= 1;
-            } else {
-                currentIndex = cards.length - 1; // Vai para o último card
-            }
-        }
-
-        setPositionByIndex();
-
-        track.style.cursor = 'grab';
-    }
-
-    function touchMove(event) {
-        if (isDragging) {
-            const currentPosition = getPositionX(event);
-            currentTranslate = prevTranslate + currentPosition - startPos;
-        }
-    }
-
-    function getPositionX(event) {
-        return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
-    }
-
-    function animation() {
-        setSliderPosition();
-        if (isDragging) requestAnimationFrame(animation);
-    }
-
-    function setSliderPosition() {
+    function drag(e) {
+        if (!isDragging) return;
+        e.preventDefault();
+        const currentPosition = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+        const diff = currentPosition - startPos;
+        currentTranslate = prevTranslate + diff;
         track.style.transform = `translateX(${currentTranslate}px)`;
     }
 
-    function setPositionByIndex() {
-        currentTranslate = currentIndex * -cardWidth;
-        prevTranslate = currentTranslate;
-        setSliderPosition();
+    function endDragging() {
+        if (!isDragging) return;
+        isDragging = false;
+        const movedBy = currentTranslate - prevTranslate;
+        
+        track.style.transition = 'transform 0.3s ease-in-out';
+        
+        if (Math.abs(movedBy) > 100) {
+            if (movedBy > 0 && currentIndex > 0) {
+                currentIndex--;
+            } else if (movedBy < 0 && currentIndex < cards.length - 1) {
+                currentIndex++;
+            }
+        }
+        
+        updateCarousel();
     }
 
-    window.addEventListener('resize', () => {
-        cardWidth = cards[0].getBoundingClientRect().width;
-        cards.forEach(setCardPosition);
-        setPositionByIndex();
-    });
+    // Inicialização
+    updateCarousel(true);
 
-    cards[0].classList.add('current-card');
+    // Atualiza o carrossel quando a janela é redimensionada
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            updateCarousel(true);
+        }, 100);
+    });
 }); 

@@ -117,23 +117,28 @@ section img {
     overflow: hidden;
     width: 100%;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
 .carousel-track-container {
     overflow: hidden;
     width: 100%;
+    position: relative;
 }
 
 .carousel-track {
     display: flex;
-    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    transition: transform 0.3s ease-in-out;
     cursor: grab;
-    gap: 10px; /* Espaço entre os cards */
-    list-style: none; /* Remove os marcadores de lista */
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .carousel-card {
-    min-width: 90%;
+    flex: 0 0 300px; /* Largura fixa para cada card */
+    margin: 0 15px;
     box-sizing: border-box;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.1);
@@ -141,12 +146,12 @@ section img {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
-    margin: 10px;
+    opacity: 0.5; /* Cards não ativos ficam com opacidade reduzida */
 }
 
-.carousel-card:hover {
+.carousel-card.active {
+    opacity: 1;
     transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .carousel-card img {
@@ -205,7 +210,6 @@ section img {
 
 @media (max-width: 600px) {
     .carousel-card {
-        min-width: 85%; /* Ajusta a largura para mostrar parte do próximo card */
-        padding: 10px;
+        flex: 0 0 80%; /* Ajusta a largura em dispositivos móveis */
     }
 }
