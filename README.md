@@ -8,7 +8,7 @@ Este é meu portfólio profissional, desenvolvido com HTML, CSS e JavaScript pur
 
 ### ✨ Características Principais
 
-- 🎨 Design futurista e responsivo
+- 🎨 Design responsivo
 - 🌐 Suporte para múltiplos idiomas (PT-BR e EN-US)
 - 🎠 Carrossel interativo de projetos
 - 📱 Layout adaptativo para diferentes dispositivos
@@ -102,7 +102,7 @@ O site suporta múltiplos idiomas. Para adicionar um novo idioma:
 ## 📫 Contato
 
 - LinkedIn: [@williamhss90](https://www.linkedin.com/in/williamhss90/)
-- GitHub: [seu-usuario](https://github.com/williamhssilva)
+- GitHub: [Williamhssilva](https://github.com/williamhssilva)
 
 
 ## 🤝 Contribuições
