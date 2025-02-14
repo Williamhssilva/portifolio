@@ -23,7 +23,7 @@ const translations = {
         'quizquest-description': 'Uma aplicação web que utiliza o modelo Mistral-7B localmente através do GPT4All para processar perguntas e respostas.',
         
         'autovideo-title': 'AutoVideo',
-        'autovideo-description': 'AutoVideo é uma aplicação web que automatiza o processo de adição de legendas em vídeos',
+        'autovideo-description': 'AutoVideo é uma aplicação web que automatiza o processo de adição de legendas em vídeos.',
         
         'gamezero-title': 'GameZero',
         'gamezero-description': 'GameZero é uma aplicação web desenvolvida em React que permite aos usuários fazerem a gestão dos seus jogos terminados.',
@@ -39,7 +39,7 @@ const translations = {
         'send-button': 'Enviar Mensagem',
 
         // Footer
-        'footer-text': '© 2025 William Silva'
+        'footer-text': '© 2024 William Silva'
     },
     'en-us': {
         // Header
@@ -65,7 +65,7 @@ const translations = {
         'quizquest-description': 'A web application that uses the Mistral-7B model locally through GPT4All to process questions and answers.',
         
         'autovideo-title': 'AutoVideo',
-        'autovideo-description': 'AutoVideo is a web application that automates the process of adding subtitles to videos',
+        'autovideo-description': 'AutoVideo is a web application that automates the process of adding subtitles to videos.',
         
         'gamezero-title': 'GameZero',
         'gamezero-description': 'GameZero is a React web application that allows users to manage their completed games.',
@@ -81,7 +81,7 @@ const translations = {
         'send-button': 'Send Message',
 
         // Footer
-        'footer-text': '© 2025 William Silva'
+        'footer-text': '© 2024 William Silva'
     }
 };
 

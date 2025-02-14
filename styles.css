@@ -137,7 +137,7 @@ section img {
 }
 
 .carousel-card {
-    flex: 0 0 300px; /* Largura fixa para cada card */
+    flex: 0 0 300px;
     margin: 0 15px;
     box-sizing: border-box;
     padding: 20px;
@@ -146,7 +146,7 @@ section img {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
-    opacity: 0.5; /* Cards não ativos ficam com opacidade reduzida */
+    opacity: 0.5;
 }
 
 .carousel-card.active {
@@ -214,32 +214,24 @@ section img {
     }
 
     .carousel-card {
-        flex: 0 0 85%;
-        margin: 0 7.5%;
+        flex: 0 0 280px; /* Tamanho fixo para melhor controle */
+        margin: 0 10px;
         padding: 15px;
     }
 
     .carousel-track {
-        padding: 0 7.5%;
-    }
-
-    .carousel-card.active {
-        transform: scale(1.02);
+        padding: 0;
     }
 
     #projects.futuristic-section {
-        padding: 5px;
+        padding: 20px 0;
     }
 }
 
 @media (max-width: 480px) {
     .carousel-card {
-        flex: 0 0 90%;
-        margin: 0 5%;
-    }
-
-    .carousel-track {
-        padding: 0 5%;
+        flex: 0 0 260px; /* Tamanho um pouco menor para telas muito pequenas */
+        margin: 0 10px;
     }
 }
 

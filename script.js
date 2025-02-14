@@ -73,8 +73,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const cardWidth = cards[0].offsetWidth;
         const margin = parseInt(window.getComputedStyle(cards[0]).marginRight);
         const containerWidth = container.offsetWidth;
+        const totalCardWidth = cardWidth + (margin * 2);
+        
+        // Calcula o offset para centralizar perfeitamente
         const offset = (containerWidth - cardWidth) / 2;
-        return -(index * (cardWidth + (margin * 2))) + offset;
+        
+        // Ajusta a posição considerando o offset de centralização
+        return -(index * totalCardWidth) + offset;
     }
 
     function updateCardContent(card, index) {
@@ -180,11 +185,11 @@ document.addEventListener('DOMContentLoaded', () => {
     updatedCards.forEach(card => {
         card.addEventListener('dragstart', e => e.preventDefault());
         card.addEventListener('mousedown', startDragging);
-        card.addEventListener('touchstart', startDragging);
+        card.addEventListener('touchstart', startDragging, { passive: false });
     });
 
     document.addEventListener('mousemove', drag);
-    document.addEventListener('touchmove', drag);
+    document.addEventListener('touchmove', drag, { passive: false });
     document.addEventListener('mouseup', endDragging);
     document.addEventListener('touchend', endDragging);
     document.addEventListener('mouseleave', endDragging);
