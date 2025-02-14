@@ -1,37 +1,33 @@
 function setLanguage(language) {
-    console.log(`Changing language to: ${language}`);
+    currentLang = language;
     
-    const header = document.querySelector('h1');
-    const aboutHeader = document.querySelector('#about h2');
-    const contactHeader = document.querySelector('#contact h2');
-    const navLinks = document.querySelectorAll('nav ul li a');
-
-    console.log('Header:', header);
-    console.log('About Header:', aboutHeader);
-    console.log('Contact Header:', contactHeader);
-    console.log('Nav Links:', navLinks);
-
-    if (header) header.textContent = translate(language, 'welcome');
-    if (aboutHeader) aboutHeader.textContent = translate(language, 'about');
-    if (contactHeader) contactHeader.textContent = translate(language, 'contact');
-
-    navLinks.forEach((link, index) => {
-        if (index === 0) link.textContent = translate(language, 'about');
-        if (index === 1) link.textContent = translate(language, 'projects');
-        if (index === 2) link.textContent = translate(language, 'contact');
+    // Atualiza textos do header
+    updateText('h1', 'welcome');
+    document.querySelectorAll('nav a').forEach(link => {
+        const key = link.getAttribute('href').replace('#', '');
+        link.textContent = translations[language][key];
     });
 
-    // Atualizar textos dos projetos
-    document.querySelectorAll('.carousel-card').forEach((card, index) => {
-        console.log(`Updating card ${index + 1}`);
-        const cardTitle = card.querySelector('h3');
-        const cardDescription = card.querySelector('p');
-        const cardLink = card.querySelector('a');
+    // Atualiza seção Sobre
+    updateText('#about h2', 'about-title');
+    updateText('#about p:first-of-type', 'about-p1');
+    updateText('#about p:last-of-type', 'about-p2');
 
-        if (cardTitle) cardTitle.textContent = translate(language, `project${index + 1}`);
-        if (cardDescription) cardDescription.textContent = translate(language, `project${index + 1}Description`);
-        if (cardLink) cardLink.textContent = translate(language, 'viewOnGitHub');
+    // Atualiza seção Projetos
+    updateText('#projects h2', 'projects-title');
+    document.querySelectorAll('.carousel-card a').forEach(link => {
+        link.textContent = translations[language]['view-github'];
     });
+
+    // Atualiza seção Contato
+    updateText('#contact h2', 'contact-title');
+    updateText('label[for="name"]', 'name-label');
+    updateText('label[for="email"]', 'email-label');
+    updateText('label[for="message"]', 'message-label');
+    updateText('.submit-btn', 'send-button');
+
+    // Atualiza footer
+    updateText('footer p', 'footer-text');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -39,7 +35,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const cards = Array.from(track.children);
     const container = document.querySelector('.carousel-track-container');
     
-    let currentIndex = 1; // Começamos do índice 1 (primeiro card real)
+    // Armazena o conteúdo original dos cards
+    const originalCards = cards.map(card => ({
+        id: card.getAttribute('aria-label'),
+        title: card.querySelector('h3').textContent,
+        description: card.querySelector('p').textContent,
+        image: card.querySelector('img').src,
+        link: card.querySelector('a').href,
+        ariaLabel: card.getAttribute('aria-label')
+    }));
+
+    // Adiciona cards fantasmas para o efeito circular
+    function setupInfiniteScroll() {
+        // Clone o último card para o início
+        const firstClone = cards[cards.length - 1].cloneNode(true);
+        firstClone.setAttribute('data-clone', 'start');
+        
+        // Clone o primeiro card para o final
+        const lastClone = cards[0].cloneNode(true);
+        lastClone.setAttribute('data-clone', 'end');
+        
+        // Adiciona os clones
+        track.insertBefore(firstClone, cards[0]);
+        track.appendChild(lastClone);
+        
+        return Array.from(track.children);
+    }
+
+    const updatedCards = setupInfiniteScroll();
+    let currentIndex = 1; // Começa no primeiro card real (após o clone)
     let startPos = 0;
     let currentTranslate = 0;
     let prevTranslate = 0;
@@ -47,19 +71,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function getPositionByIndex(index) {
         const cardWidth = cards[0].offsetWidth;
-        const containerWidth = container.offsetWidth;
         const margin = parseInt(window.getComputedStyle(cards[0]).marginRight);
+        const containerWidth = container.offsetWidth;
         const offset = (containerWidth - cardWidth) / 2;
-        return -(index * (cardWidth + margin * 2)) + offset;
+        return -(index * (cardWidth + (margin * 2))) + offset;
+    }
+
+    function updateCardContent(card, index) {
+        // Ajusta o índice para os cards clonados
+        const realIndex = index === 0 ? originalCards.length - 1 :
+                         index === updatedCards.length - 1 ? 0 :
+                         index - 1;
+                         
+        const content = originalCards[realIndex];
+        if (!content) return;
+        
+        const titleElement = card.querySelector('h3');
+        const descriptionElement = card.querySelector('p');
+        const imageElement = card.querySelector('img');
+        const linkElement = card.querySelector('a');
+        
+        if (titleElement) {
+            const translationKey = `${content.id}-title`;
+            titleElement.textContent = translations[currentLang][translationKey] || content.title;
+        }
+        
+        if (descriptionElement) {
+            const translationKey = `${content.id}-description`;
+            descriptionElement.textContent = translations[currentLang][translationKey] || content.description;
+        }
+        
+        if (imageElement) {
+            imageElement.src = content.image;
+            imageElement.alt = `Screenshot do projeto ${content.title}`;
+        }
+        
+        if (linkElement) {
+            linkElement.href = content.link;
+            linkElement.setAttribute('aria-label', 
+                `${translations[currentLang]['view-github']} - ${content.title}`);
+        }
     }
 
     function updateCarousel(instant = false) {
         currentTranslate = getPositionByIndex(currentIndex);
-        
         track.style.transition = instant ? 'none' : 'transform 0.3s ease-in-out';
         track.style.transform = `translateX(${currentTranslate}px)`;
         
-        cards.forEach((card, index) => {
+        updatedCards.forEach((card, index) => {
             card.classList.remove('active');
             if (index === currentIndex) {
                 card.classList.add('active');
@@ -67,37 +126,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Função para verificar e ajustar o loop infinito
     function checkIndex() {
         track.style.transition = 'none';
-        if (currentIndex === cards.length - 1) {
+        
+        if (currentIndex === updatedCards.length - 1) {
             currentIndex = 1;
             updateCarousel(true);
         }
+        
         if (currentIndex === 0) {
-            currentIndex = cards.length - 2;
+            currentIndex = updatedCards.length - 2;
             updateCarousel(true);
         }
     }
 
-    track.addEventListener('transitionend', checkIndex);
-
-    cards.forEach((card, index) => {
-        card.addEventListener('mousedown', startDragging, { passive: false });
-        card.addEventListener('touchstart', startDragging, { passive: false });
-        card.addEventListener('dragstart', (e) => e.preventDefault());
-    });
-
-    document.addEventListener('mousemove', drag, { passive: false });
-    document.addEventListener('touchmove', drag, { passive: false });
-    document.addEventListener('mouseup', endDragging);
-    document.addEventListener('touchend', endDragging);
-
+    // Event Listeners para arrastar
     function startDragging(e) {
         isDragging = true;
         startPos = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
         prevTranslate = currentTranslate;
-        track.style.transition = 'none';
+        track.style.cursor = 'grabbing';
     }
 
     function drag(e) {
@@ -112,9 +160,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function endDragging() {
         if (!isDragging) return;
         isDragging = false;
-        const movedBy = currentTranslate - prevTranslate;
+        track.style.cursor = 'grab';
         
-        track.style.transition = 'transform 0.3s ease-in-out';
+        const movedBy = currentTranslate - prevTranslate;
         
         if (Math.abs(movedBy) > 100) {
             if (movedBy > 0) {
@@ -125,11 +173,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         updateCarousel();
+        checkIndex();
     }
+
+    // Event Listeners
+    updatedCards.forEach(card => {
+        card.addEventListener('dragstart', e => e.preventDefault());
+        card.addEventListener('mousedown', startDragging);
+        card.addEventListener('touchstart', startDragging);
+    });
+
+    document.addEventListener('mousemove', drag);
+    document.addEventListener('touchmove', drag);
+    document.addEventListener('mouseup', endDragging);
+    document.addEventListener('touchend', endDragging);
+    document.addEventListener('mouseleave', endDragging);
+
+    track.addEventListener('transitionend', checkIndex);
 
     // Inicialização
     updateCarousel(true);
 
+    // Atualização em caso de redimensionamento
     let resizeTimeout;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);

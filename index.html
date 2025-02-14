@@ -4,28 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Portfólio</title>
+    <meta name="description" content="Portfólio profissional de William Silva - Desenvolvedor Full Stack com experiência em React, Node.js e TypeScript. Conheça meus projetos e habilidades.">
+    <meta name="keywords" content="desenvolvedor full stack, portfolio, react, nodejs, typescript, william silva">
+    <meta name="author" content="William Silva">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://seu-site.com/">
+    <meta property="og:title" content="William Silva - Desenvolvedor Full Stack">
+    <meta property="og:description" content="Portfólio profissional de William Silva - Desenvolvedor Full Stack com experiência em React, Node.js e TypeScript.">
+    <meta property="og:image" content="https://seu-site.com/preview.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://seu-site.com/">
+    <meta property="twitter:title" content="William Silva - Desenvolvedor Full Stack">
+    <meta property="twitter:description" content="Portfólio profissional de William Silva - Desenvolvedor Full Stack com experiência em React, Node.js e TypeScript.">
+    <meta property="twitter:image" content="https://seu-site.com/preview.jpg">
+
+    <title>William Silva - Desenvolvedor Full Stack | Portfólio</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
     <div class="content-wrapper">
-        <header class="futuristic-header">
+        <header class="futuristic-header" role="banner">
             <h1>Bem-vindo ao Meu Portfólio</h1>
-            <nav>
+            <nav role="navigation" aria-label="Menu principal">
                 <ul>
-                    <li><a href="#about">Sobre Mim</a></li>
-                    <li><a href="#projects">Projetos</a></li>
-                    <li><a href="#contact">Contato</a></li>
+                    <li><a href="#about" aria-label="Ir para seção Sobre Mim">Sobre Mim</a></li>
+                    <li><a href="#projects" aria-label="Ir para seção Projetos">Projetos</a></li>
+                    <li><a href="#contact" aria-label="Ir para seção Contato">Contato</a></li>
                 </ul>
             </nav>
-            <div class="language-switcher">
-                <button onclick="setLanguage('pt-br')">
-                    <img src="https://flagicons.lipis.dev/flags/4x3/br.svg" alt="Português" class="flag-icon">
+            <div class="language-switcher" role="region" aria-label="Seletor de idioma">
+                <button onclick="setLanguage('pt-br')" aria-label="Mudar para Português">
+                    <img src="https://flagicons.lipis.dev/flags/4x3/br.svg" alt="Bandeira do Brasil" class="flag-icon">
                 </button>
-                <button onclick="setLanguage('en-us')">
-                    <img src="https://flagicons.lipis.dev/flags/4x3/us.svg" alt="English" class="flag-icon">
+                <button onclick="setLanguage('en-us')" aria-label="Change to English">
+                    <img src="https://flagicons.lipis.dev/flags/4x3/us.svg" alt="United States Flag" class="flag-icon">
                 </button>
             </div>
         </header>
@@ -33,72 +51,103 @@
             <h2>Sobre Mim</h2>
             <img src="https://placehold.jp/150x150.png" alt="Minha Foto" class="profile-pic">
             <p>
-                Desenvolvedor Full Stack com mais de 8 anos de experiência, especializado em tecnologias como React, Node.js, e TypeScript. 
-                Atualmente, atuo como Tech Lead na Compass UOL, liderando equipes e projetos inovadores.
+                Cientista da Computação formado pela Universidade de Franca (UNIFRAN), com uma sólida experiência em desenvolvimento 
+                Full Stack e uma paixão por educação em tecnologia.
             </p>
             <p>
-                Minha jornada inclui experiências significativas em empresas como IBM e Accenture, onde desenvolvi habilidades sólidas 
-                em arquitetura de software e gestão de equipes ágeis. Sou apaixonado por criar soluções escaláveis e manter-me 
-                atualizado com as últimas tendências em desenvolvimento web.
+                Minha jornada profissional inclui experiências significativas como Professor na Euro Anglo Cursos, onde ministrei aulas 
+                de Informática, Desenvolvimento Web e Manutenção de Computadores. Também atuei como Desenvolvedor Full Stack na Immobile 
+                Business, desenvolvendo sistemas web para o setor imobiliário, e como Game Designer na CISU-Franca, onde trabalhei com 
+                desenvolvimento de jogos educativos utilizando Unity e C#.
             </p>
             <div class="skills-container">
-                <span class="skill-tag">React</span>
-                <span class="skill-tag">Node.js</span>
-                <span class="skill-tag">TypeScript</span>
+                <span class="skill-tag">HTML</span>
+                <span class="skill-tag">CSS</span>
                 <span class="skill-tag">JavaScript</span>
-                <span class="skill-tag">AWS</span>
-                <span class="skill-tag">Docker</span>
+                <span class="skill-tag">TypeScript</span>
+                <span class="skill-tag">PHP</span>
+                <span class="skill-tag">Laravel</span>
+                <span class="skill-tag">Bootstrap</span>
+                <span class="skill-tag">jQuery</span>
+                <span class="skill-tag">Angular</span>
+                <span class="skill-tag">SQL Server</span>
+                <span class="skill-tag">MySQL</span>
+                <span class="skill-tag">PostgreSQL</span>
+                <span class="skill-tag">MongoDB</span>
+                <span class="skill-tag">REST</span>
+                <span class="skill-tag">Node.js</span>
+                <span class="skill-tag">Express</span>
+                <span class="skill-tag">React</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Django</span>
+                <span class="skill-tag">C#</span>
+                <span class="skill-tag">Unity</span>
+                <span class="skill-tag">Regex</span>
+                <span class="skill-tag">Git</span>
                 <span class="skill-tag">Agile</span>
             </div>
         </section>
-        <section id="projects" class="futuristic-section">
-            <div class="carousel">
+        <section id="projects" class="futuristic-section" aria-label="Meus Projetos">
+            <div class="carousel" role="region" aria-label="Carrossel de projetos">
                 <div class="carousel-track-container">
-                    <ul class="carousel-track">
-                        <li class="carousel-card">
-                            <h3>Projeto 5</h3>
-                            <img src="https://placehold.jp/300x200.png" alt="Imagem do Projeto 5">
-                            <p>Descrição do projeto 5.</p>
-                            <a href="https://github.com/seu-usuario/projeto5">Ver no GitHub</a>
+                    <ul class="carousel-track" role="list">
+                        <li class="carousel-card" role="listitem" aria-label="lolversus">
+                            <h3>LOLVersus</h3>
+                            <img src="https://placehold.jp/300x200.png" alt="Interface do Projeto mostrando as principais funcionalidades">
+                            <p>LOLVersus é uma aplicação web interativa que ajuda jogadores de League of Legends a encontrar os melhores counters para qualquer campeão.</p>
+                            <a href="https://github.com/Williamhssilva/lolversus" 
+                               aria-label="Ver código do lolversus no GitHub"
+                               target="_blank" 
+                               rel="noopener noreferrer">
+                                Ver no GitHub
+                            </a>
                         </li>
-                        <li class="carousel-card">
-                            <h3>Projeto 1</h3>
-                            <img src="https://placehold.jp/300x200.png" alt="Imagem do Projeto 1">
-                            <p>Descrição do projeto 1.</p>
-                            <a href="https://github.com/seu-usuario/projeto1">Ver no GitHub</a>
+                        <li class="carousel-card" role="listitem" aria-label="QuizQuest">
+                            <h3>QuizQuest</h3>
+                            <img src="https://placehold.jp/300x200.png" alt="Interface do Projeto mostrando as principais funcionalidades">
+                            <p>Uma aplicação web que utiliza o modelo Mistral-7B localmente através do GPT4All para processar perguntas e respostas.</p>
+                            <a href="https://github.com/Williamhssilva/QuizQuest" 
+                               aria-label="Ver código do QuizQuest no GitHub"
+                               target="_blank" 
+                               rel="noopener noreferrer">
+                                Ver no GitHub
+                            </a>
                         </li>
-                        <li class="carousel-card">
-                            <h3>Projeto 2</h3>
-                            <img src="https://placehold.jp/300x200.png" alt="Imagem do Projeto 2">
-                            <p>Descrição do projeto 2.</p>
-                            <a href="https://github.com/seu-usuario/projeto2">Ver no GitHub</a>
+                        <li class="carousel-card" role="listitem" aria-label="autovideo">
+                            <h3>AutoVideo</h3>
+                            <img src="https://placehold.jp/300x200.png" alt="Imagem do Projeto 3">
+                            <p>AutoVideo é uma aplicação web que automatiza o processo de adição de legendas em vídeos</p>
+                            <a href="https://github.com/Williamhssilva/autovideo" 
+                               aria-label="Ver código do Projeto autovideo no GitHub"
+                               target="_blank" 
+                               rel="noopener noreferrer">
+                                Ver no GitHub
+                            </a>
                         </li>
-                        <li class="carousel-card">
-                            <h3>Projeto 3</h3>
-                            <img src="https://placehold.jp/300x200.png" alt="Imagem do Projeto 2">
-                            <p>Descrição do projeto 2.</p>
-                            <a href="https://github.com/seu-usuario/projeto2">Ver no GitHub</a>
+                        <li class="carousel-card" role="listitem" aria-label="gamezero">
+                            <h3>GameZero</h3>
+                            <img src="https://placehold.jp/300x200.png" alt="Imagem do Projeto 4">
+                            <p>GameZero é uma aplicação web desenvolvida em React que permite aos usuários fazerem a gestão dos seus jogos terminados.</p>
+                            <a href="https://github.com/Williamhssilva/gamezero" 
+                               aria-label="Ver código do Projeto gamezero no GitHub"
+                               target="_blank" 
+                               rel="noopener noreferrer">
+                                Ver no GitHub
+                            </a>
                         </li>
-                        <li class="carousel-card">
-                            <h3>Projeto 4</h3>
-                            <img src="https://placehold.jp/300x200.png" alt="Imagem do Projeto 2">
-                            <p>Descrição do projeto 2.</p>
-                            <a href="https://github.com/seu-usuario/projeto2">Ver no GitHub</a>
-                        </li>
-                        <li class="carousel-card">
-                            <h3>Projeto 5</h3>
-                            <img src="https://placehold.jp/300x200.png" alt="Imagem do Projeto 5">
-                            <p>Descrição do projeto 5.</p>
-                            <a href="https://github.com/seu-usuario/projeto5">Ver no GitHub</a>
-                        </li>
-                        <li class="carousel-card">
-                            <h3>Projeto 1</h3>
-                            <img src="https://placehold.jp/300x200.png" alt="Imagem do Projeto 1">
-                            <p>Descrição do projeto 1.</p>
-                            <a href="https://github.com/seu-usuario/projeto1">Ver no GitHub</a>
+                        <li class="carousel-card" role="listitem" aria-label="Parcero Imóveis">
+                            <h3>Parcero Imóveis</h3>
+                            <img src="https://placehold.jp/300x200.png" alt="Imagem do Projeto Parcero Imóveis">
+                            <p>API RESTful para o gerenciamento de propriedades imobiliárias.</p>
+                            <a href="https://github.com/Williamhssilva/partner" 
+                               aria-label="Ver código do Projeto Partner no GitHub"
+                               target="_blank" 
+                               rel="noopener noreferrer">
+                                Ver no GitHub
+                            </a>
                         </li>
                     </ul>
-                </div>
+                </div>                
             </div>
         </section>
         <section id="contact" class="futuristic-section">
