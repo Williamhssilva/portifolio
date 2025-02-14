@@ -188,11 +188,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // Adicione isso após a inicialização do carousel
     function setupImageModal() {
         const modal = document.getElementById('imageModal');
+        // Verifica se o modal existe antes de continuar
+        if (!modal) {
+            console.warn('Modal não encontrado no DOM');
+            return;
+        }
+
         const modalImg = document.getElementById('modalImage');
-        const closeBtn = document.querySelector('.close-modal');
-        const prevBtn = document.querySelector('.modal-prev');
-        const nextBtn = document.querySelector('.modal-next');
+        const closeBtn = modal.querySelector('.close-modal');
+        const prevBtn = modal.querySelector('.modal-prev');
+        const nextBtn = modal.querySelector('.modal-next');
         let currentImageIndex = 0;
+
+        // Verifica se os elementos necessários existem
+        if (!modalImg || !closeBtn || !prevBtn || !nextBtn) {
+            console.warn('Elementos do modal não encontrados');
+            return;
+        }
 
         // Adiciona click listener em todas as imagens dos cards
         updatedCards.forEach((card, index) => {
@@ -259,6 +271,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Chame a função após inicializar o carousel
-    setupImageModal();
+    // Chama setupImageModal após a inicialização do carousel
+    setTimeout(setupImageModal, 100); // Pequeno delay para garantir que tudo está carregado
 }); 
