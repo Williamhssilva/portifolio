@@ -39,7 +39,17 @@ const translations = {
         'send-button': 'Enviar Mensagem',
 
         // Footer
-        'footer-text': '© 2024 William Silva'
+        'footer-text': '© 2024 William Silva',
+
+        // Notificações do formulário
+        'form-empty-fields': 'Por favor, preencha todos os campos.',
+        'form-invalid-email': 'Por favor, insira um email válido.',
+        'form-sending': 'Enviando mensagem...',
+        'form-success': 'Mensagem enviada com sucesso!',
+        'form-error': 'Erro ao enviar mensagem. Por favor, tente novamente.',
+
+        // Botões
+        'github-button': 'Ver no GitHub',
     },
     'en-us': {
         // Header
@@ -81,7 +91,17 @@ const translations = {
         'send-button': 'Send Message',
 
         // Footer
-        'footer-text': '© 2024 William Silva'
+        'footer-text': '© 2024 William Silva',
+
+        // Form notifications
+        'form-empty-fields': 'Please fill in all fields.',
+        'form-invalid-email': 'Please enter a valid email.',
+        'form-sending': 'Sending message...',
+        'form-success': 'Message sent successfully!',
+        'form-error': 'Error sending message. Please try again.',
+
+        // Buttons
+        'github-button': 'View on GitHub',
     }
 };
 

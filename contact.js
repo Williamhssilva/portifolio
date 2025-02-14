@@ -43,19 +43,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (!name || !email || !message) {
             console.warn('Validação falhou: campos vazios');
-            showNotification('Por favor, preencha todos os campos.', 'error');
+            showNotification('form-empty-fields', 'error');
             return;
         }
 
         if (!isValidEmail(email)) {
             console.warn('Validação falhou: email inválido -', email);
-            showNotification('Por favor, insira um email válido.', 'error');
+            showNotification('form-invalid-email', 'error');
             return;
         }
 
         setLoading(true);
         console.log('Iniciando processo de envio...');
-        showNotification('Enviando mensagem...', 'info');
+        showNotification('form-sending', 'info');
 
         try {
             console.log('Tentando enviar email via EmailJS...');
@@ -71,18 +71,19 @@ document.addEventListener('DOMContentLoaded', function() {
             );
             
             console.log('Resposta do EmailJS:', response);
-            showNotification('Mensagem enviada com sucesso!', 'success');
+            showNotification('form-success', 'success');
             form.reset();
             
         } catch (error) {
             console.error('Erro ao enviar email:', error);
-            showNotification('Erro ao enviar mensagem. Por favor, tente novamente.', 'error');
+            showNotification('form-error', 'error');
         } finally {
             setLoading(false);
         }
     });
 
-    function showNotification(message, type) {
+    function showNotification(messageKey, type) {
+        const message = translations[currentLang][messageKey];
         console.log(`Mostrando notificação: ${type} - ${message}`);
         const notification = document.createElement('div');
         notification.className = `notification ${type}`;
