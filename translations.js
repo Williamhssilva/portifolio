@@ -40,7 +40,7 @@ const translations = {
         'send-button': 'Enviar Mensagem',
 
         // Footer
-        'footer-text': '© 2024 William Silva',
+        'footer-text': '© 2025 William Silva',
 
         // Notificações do formulário
         'form-empty-fields': 'Por favor, preencha todos os campos.',
@@ -118,7 +118,7 @@ const translations = {
         'send-button': 'Send Message',
 
         // Footer
-        'footer-text': '© 2024 William Silva',
+        'footer-text': '© 2025 William Silva',
 
         // Form notifications
         'form-empty-fields': 'Please fill in all fields.',
