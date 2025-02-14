@@ -56,7 +56,20 @@ const translations = {
         'portuguese': 'Português',
         'english': 'Inglês',
         'native': 'Nativo',
-        'intermediate': 'Intermediário'
+        'intermediate': 'Intermediário',
+
+        // Skill Categories
+        'skill-categories': {
+            'javascript': 'Ecossistema JavaScript',
+            'php': 'Ecossistema PHP',
+            'python': 'Ecossistema Python',
+            'dotnet': 'Ecossistema .NET',
+            'database': 'Bancos de Dados',
+            'devops': 'DevOps',
+            'gamedev': 'Desenvolvimento de Jogos',
+            'package-managers': 'Gerenciadores de Pacotes',
+            'methodologies': 'Metodologias e Gestão'
+        }
     },
     'en-us': {
         // Header
@@ -115,7 +128,20 @@ const translations = {
         'portuguese': 'Portuguese',
         'english': 'English',
         'native': 'Native',
-        'intermediate': 'Intermediate'
+        'intermediate': 'Intermediate',
+
+        // Skill Categories
+        'skill-categories': {
+            'javascript': 'JavaScript Ecosystem',
+            'php': 'PHP Ecosystem',
+            'python': 'Python Ecosystem',
+            'dotnet': '.NET Ecosystem',
+            'database': 'Databases',
+            'devops': 'DevOps',
+            'gamedev': 'Game Development',
+            'package-managers': 'Package Managers',
+            'methodologies': 'Methodologies & Management'
+        }
     }
 };
 
