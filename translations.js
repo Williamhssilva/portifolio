@@ -50,6 +50,13 @@ const translations = {
 
         // Botões
         'github-button': 'Ver no GitHub',
+
+        // Languages Section
+        'languages-title': 'Idiomas',
+        'portuguese': 'Português',
+        'english': 'Inglês',
+        'native': 'Nativo',
+        'intermediate': 'Intermediário'
     },
     'en-us': {
         // Header
@@ -102,6 +109,13 @@ const translations = {
 
         // Buttons
         'github-button': 'View on GitHub',
+
+        // Languages Section
+        'languages-title': 'Languages',
+        'portuguese': 'Portuguese',
+        'english': 'English',
+        'native': 'Native',
+        'intermediate': 'Intermediate'
     }
 };
 

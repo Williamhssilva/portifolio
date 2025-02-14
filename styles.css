@@ -3,7 +3,7 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #1f1c2c, #928dab);
+    background: linear-gradient(135deg, #0a192f, #112240);
     color: #fff;
 }
 
@@ -418,29 +418,96 @@ section img {
     }
 }
 
+/* Skills Container */
 .skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.skill-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 20px;
+    gap: 1rem;
+    margin-top: 2rem;
     justify-content: center;
 }
 
 .skill-tag {
-    background: rgba(255, 64, 129, 0.2);
-    padding: 8px 16px;
+    background: rgba(74, 144, 226, 0.1);
+    border: 1px solid rgba(74, 144, 226, 0.3);
+    padding: 0.5rem 1rem;
     border-radius: 20px;
-    font-size: 14px;
-    color: #fff;
-    border: 1px solid #ff4081;
+    font-size: 0.9rem;
+    color: #4a90e2;
     transition: all 0.3s ease;
+    cursor: default;
 }
 
 .skill-tag:hover {
-    background: rgba(255, 64, 129, 0.4);
+    background: rgba(74, 144, 226, 0.2);
     transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(74, 144, 226, 0.2);
 }
 
+/* JavaScript Ecosystem */
+.skill-tag.javascript {
+    background: rgba(247, 223, 30, 0.1);
+    border: 1px solid rgba(247, 223, 30, 0.3);
+    color: #f7df1e;
+}
+
+/* PHP Ecosystem */
+.skill-tag.php {
+    background: rgba(119, 123, 179, 0.1);
+    border: 1px solid rgba(119, 123, 179, 0.3);
+    color: #777bb3;
+}
+
+/* Python Ecosystem */
+.skill-tag.python {
+    background: rgba(55, 118, 171, 0.1);
+    border: 1px solid rgba(55, 118, 171, 0.3);
+    color: #3776ab;
+}
+
+/* .NET Ecosystem */
+.skill-tag.dotnet {
+    background: rgba(118, 61, 184, 0.1);
+    border: 1px solid rgba(109, 53, 174, 0.3);
+    color: #8c55cb;
+}
+
+/* Database */
+.skill-tag.database {
+    background: rgba(0, 150, 136, 0.1);
+    border: 1px solid rgba(0, 150, 136, 0.3);
+    color: #009688;
+}
+
+/* DevOps */
+.skill-tag.devops {
+    background: rgba(255, 122, 0, 0.1);
+    border: 1px solid rgba(255, 122, 0, 0.3);
+    color: #ff7a00;
+}
+
+/* Gerenciadores de Pacotes */
+.skill-tag.gerenciador-pacotes {
+    background: rgba(162, 255, 0, 0.1);
+    border: 1px solid rgba(111, 255, 0, 0.3);
+    color: #9dff00;
+}
+
+/* Metodologias e Gestão */
+.skill-tag.metodologias {
+    background: rgba(0, 255, 255, 0.1);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    color: #00ffff;
+}
 /* Melhorando contraste e estados de foco */
 a:focus,
 button:focus {
@@ -665,3 +732,82 @@ nav ul li a:focus {
 .form-group:last-of-type {
     margin-bottom: 30px;
 }
+
+/* Seção de Idiomas */
+.languages-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.language-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+    margin-bottom: 1.5rem;
+}
+
+.language-card:hover {
+    transform: translateX(10px);
+}
+
+.language-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.language-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #4a90e2;
+}
+
+.language-level {
+    color: #67B26F;
+    font-size: 0.9rem;
+}
+
+.language-percentage {
+    color: #4a90e2;
+    font-weight: 600;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(90deg, #4a90e2, #67B26F);
+    border-radius: 10px;
+    transition: width 1.5s ease-in-out;
+}
+
+/* Animação de entrada */
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.language-card {
+    animation: slideInFromLeft 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.language-card:nth-child(1) { animation-delay: 0.1s; }
+.language-card:nth-child(2) { animation-delay: 0.2s; }
