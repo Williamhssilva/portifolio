@@ -57,6 +57,9 @@ const translations = {
         'english': 'Inglês',
         'native': 'Nativo',
         'intermediate': 'Intermediário',
+        'spanish': 'Espanhol',
+        'french': 'Francês',
+        'basic': 'Básico',
 
         // Skill Categories
         'skill-categories': {
@@ -129,6 +132,9 @@ const translations = {
         'english': 'English',
         'native': 'Native',
         'intermediate': 'Intermediate',
+        'spanish': 'Spanish',
+        'french': 'French',
+        'basic': 'Basic',
 
         // Skill Categories
         'skill-categories': {
