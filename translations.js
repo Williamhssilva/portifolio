@@ -39,7 +39,7 @@ const translations = {
         'send-button': 'Enviar Mensagem',
 
         // Footer
-        'footer-text': '© 2024 William Silva',
+        'footer-text': '© 2025 William Silva',
 
         // Notificações do formulário
         'form-empty-fields': 'Por favor, preencha todos os campos.',
@@ -111,7 +111,7 @@ const translations = {
         'send-button': 'Send Message',
 
         // Footer
-        'footer-text': '© 2024 William Silva',
+        'footer-text': '© 2025 William Silva',
 
         // Form notifications
         'form-empty-fields': 'Please fill in all fields.',
@@ -234,6 +234,27 @@ function setLanguage(lang) {
 
     // Atualiza conteúdo dos projetos
     updateProjectsContent();
+
+    // Atualiza seção de Idiomas
+    updateText('#languages h2', 'languages-title');
+    document.querySelectorAll('.language-card').forEach(card => {
+        const languageNameElement = card.querySelector('.language-name');
+        const languageLevelElement = card.querySelector('.language-level');
+        
+        if (languageNameElement) {
+            const langKey = languageNameElement.getAttribute('data-lang');
+            if (langKey) {
+                languageNameElement.textContent = translations[lang][langKey];
+            }
+        }
+        
+        if (languageLevelElement) {
+            const levelKey = languageLevelElement.getAttribute('data-level');
+            if (levelKey) {
+                languageLevelElement.textContent = translations[lang][levelKey];
+            }
+        }
+    });
 
     // Força a atualização do carousel
     const track = document.querySelector('.carousel-track');
