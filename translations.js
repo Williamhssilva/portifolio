@@ -9,25 +9,26 @@ const translations = {
         // About Section
         'about-title': 'Sobre Mim',
         'about-p1': 'Cientista da Computação formado pela Universidade de Franca (UNIFRAN), com uma sólida experiência em desenvolvimento Full Stack e uma paixão por educação em tecnologia.',
-        'about-p2': 'Minha jornada profissional inclui experiências significativas como Professor na Euro Anglo Cursos, onde ministrei aulas de Informática, Desenvolvimento Web e Manutenção de Computadores. Também atuei como Desenvolvedor Full Stack na Immobile Business, desenvolvendo sistemas web para o setor imobiliário, e como Game Designer na CISU-Franca, onde trabalhei com desenvolvimento de jogos educativos utilizando Unity e C#.',
+        'about-p2': 'Ao longo da minha trajetória, trabalhei em diversos projetos desafiadores, o que me proporcionou um amplo domínio de tecnologias como Node.js, React, Python, SQL Server, MySQL, MongoDB, Git e outras.',
+        'about-p3': 'Minha experiência profissional é diversificada, incluindo atuação como desenvolvedor em empresas de diferentes portes, professor de informática e até mesmo desenvolvimento de aplicações para o agronegócio. Essa versatilidade me permite adaptar a diferentes contextos e encontrar soluções criativas para os desafios que surgem. Acredito que a tecnologia tem o poder de transformar o mundo e, por isso, me dedico a compartilhar meus conhecimentos e experiências com outras pessoas. Seja em sala de aula, em workshops ou em conversas informais, busco sempre transmitir o meu entusiasmo pela área e inspirar outros a seguirem seus sonhos.',
 
         // Projects Section
         'projects-title': 'Projetos',
         'view-github': 'Ver no GitHub',
-        
+
         // Projetos específicos
         'lolversus-title': 'LOLVersus',
         'lolversus-description': 'LOLVersus é uma aplicação web interativa que ajuda jogadores de League of Legends a encontrar os melhores counters para qualquer campeão.',
-        
+
         'quizquest-title': 'QuizQuest',
         'quizquest-description': 'Uma aplicação web que utiliza o modelo Mistral-7B localmente através do GPT4All para processar perguntas e respostas.',
-        
+
         'autovideo-title': 'AutoVideo',
         'autovideo-description': 'AutoVideo é uma aplicação web que automatiza o processo de adição de legendas em vídeos.',
-        
+
         'gamezero-title': 'GameZero',
         'gamezero-description': 'GameZero é uma aplicação web desenvolvida em React que permite aos usuários fazerem a gestão dos seus jogos terminados.',
-        
+
         'parcero-title': 'Parcero Imóveis',
         'parcero-description': 'API RESTful para o gerenciamento de propriedades imobiliárias.',
 
@@ -39,7 +40,7 @@ const translations = {
         'send-button': 'Enviar Mensagem',
 
         // Footer
-        'footer-text': '© 2025 William Silva',
+        'footer-text': '© 2024 William Silva',
 
         // Notificações do formulário
         'form-empty-fields': 'Por favor, preencha todos os campos.',
@@ -55,10 +56,10 @@ const translations = {
         'languages-title': 'Idiomas',
         'portuguese': 'Português',
         'english': 'Inglês',
-        'native': 'Nativo',
-        'intermediate': 'Intermediário',
         'spanish': 'Espanhol',
         'french': 'Francês',
+        'native': 'Nativo',
+        'intermediate': 'Intermediário',
         'basic': 'Básico',
 
         // Skill Categories
@@ -84,25 +85,26 @@ const translations = {
         // About Section
         'about-title': 'About Me',
         'about-p1': 'Computer Science graduate from the University of Franca (UNIFRAN), with solid experience in Full Stack development and a passion for technology education.',
-        'about-p2': 'My professional journey includes significant experiences as a Teacher at Euro Anglo Courses, where I taught Computer Science, Web Development, and Computer Maintenance. I also worked as a Full Stack Developer at Immobile Business, developing web systems for the real estate sector, and as a Game Designer at CISU-Franca, where I worked with educational game development using Unity and C#.',
+        'about-p2': 'Throughout my journey, I have worked on several challenging projects, which provided me with extensive mastery of technologies such as Node.js, React, Python, SQL Server, MySQL, MongoDB, Git, and others.',
+        'about-p3': 'My professional experience is diverse, including roles as a developer in companies of different sizes, computer science teacher, and even development of applications for agribusiness. This versatility allows me to adapt to different contexts and find creative solutions to emerging challenges. I believe that technology has the power to transform the world, and that\'s why I dedicate myself to sharing my knowledge and experiences with others. Whether in the classroom, workshops, or informal conversations, I always seek to convey my enthusiasm for the field and inspire others to follow their dreams.',
 
         // Projects Section
         'projects-title': 'Projects',
         'view-github': 'View on GitHub',
-        
+
         // Specific projects
         'lolversus-title': 'LOLVersus',
         'lolversus-description': 'LOLVersus is an interactive web application that helps League of Legends players find the best counters for any champion.',
-        
+
         'quizquest-title': 'QuizQuest',
         'quizquest-description': 'A web application that uses the Mistral-7B model locally through GPT4All to process questions and answers.',
-        
+
         'autovideo-title': 'AutoVideo',
         'autovideo-description': 'AutoVideo is a web application that automates the process of adding subtitles to videos.',
-        
+
         'gamezero-title': 'GameZero',
         'gamezero-description': 'GameZero is a React web application that allows users to manage their completed games.',
-        
+
         'parcero-title': 'Parcero Real Estate',
         'parcero-description': 'RESTful API for real estate property management.',
 
@@ -114,7 +116,7 @@ const translations = {
         'send-button': 'Send Message',
 
         // Footer
-        'footer-text': '© 2025 William Silva',
+        'footer-text': '© 2024 William Silva',
 
         // Form notifications
         'form-empty-fields': 'Please fill in all fields.',
@@ -130,10 +132,10 @@ const translations = {
         'languages-title': 'Languages',
         'portuguese': 'Portuguese',
         'english': 'English',
-        'native': 'Native',
-        'intermediate': 'Intermediate',
         'spanish': 'Spanish',
         'french': 'French',
+        'native': 'Native',
+        'intermediate': 'Intermediate',
         'basic': 'Basic',
 
         // Skill Categories
@@ -190,7 +192,7 @@ function updateProjectsContent() {
             const title = element.querySelector('h3');
             const description = element.querySelector('p');
             const link = element.querySelector('a');
-            
+
             if (title) title.textContent = translations[currentLang][`${key}-title`];
             if (description) description.textContent = translations[currentLang][`${key}-description`];
             if (link) link.textContent = translations[currentLang]['view-github'];
@@ -201,7 +203,7 @@ function updateProjectsContent() {
 // Função principal para trocar o idioma
 function setLanguage(lang) {
     currentLang = lang;
-    
+
     // Atualiza textos do header
     updateText('h1', 'welcome');
     document.querySelectorAll('nav a').forEach(link => {
@@ -211,8 +213,9 @@ function setLanguage(lang) {
 
     // Atualiza seção Sobre
     updateText('#about h2', 'about-title');
-    updateText('#about p:first-of-type', 'about-p1');
-    updateText('#about p:last-of-type', 'about-p2');
+    updateText('#about-p1', 'about-p1');
+    updateText('#about-p2', 'about-p2');
+    updateText('#about-p3', 'about-p3');
 
     // Atualiza seção Projetos
     updateText('#projects h2', 'projects-title');
@@ -246,14 +249,14 @@ function setLanguage(lang) {
     document.querySelectorAll('.language-card').forEach(card => {
         const languageNameElement = card.querySelector('.language-name');
         const languageLevelElement = card.querySelector('.language-level');
-        
+
         if (languageNameElement) {
             const langKey = languageNameElement.getAttribute('data-lang');
             if (langKey) {
                 languageNameElement.textContent = translations[lang][langKey];
             }
         }
-        
+
         if (languageLevelElement) {
             const levelKey = languageLevelElement.getAttribute('data-level');
             if (levelKey) {
@@ -267,7 +270,7 @@ function setLanguage(lang) {
     if (track) {
         const event = new Event('languagechange');
         track.dispatchEvent(event);
-        
+
         // Atualiza o carousel imediatamente
         if (typeof updateCarousel === 'function') {
             updateCarousel(true);

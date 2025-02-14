@@ -467,6 +467,18 @@ section img {
     box-shadow: 0 5px 15px rgba(74, 144, 226, 0.2);
 }
 
+.skill-tag.html {
+    background: rgba(247, 223, 30, 0.1);
+    border: 1px solid rgba(247, 223, 30, 0.3);
+    color: #f7df1e;
+}
+
+.skill-tag.css {
+    background: rgba(30, 144, 255, 0.1);
+    border: 1px solid rgba(30, 144, 255, 0.3);
+    color: #1e90ff;
+}
+
 /* JavaScript Ecosystem */
 .skill-tag.javascript {
     background: rgba(247, 223, 30, 0.1);
@@ -825,3 +837,13 @@ nav ul li a:focus {
 
 .language-card:nth-child(1) { animation-delay: 0.1s; }
 .language-card:nth-child(2) { animation-delay: 0.2s; }
+
+.about-content {
+    margin: 2rem 0;
+}
+
+.about-content p {
+    margin-bottom: 1.5rem;
+    text-align: justify;
+    line-height: 1.8;
+}

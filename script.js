@@ -256,4 +256,75 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Chama a função quando o DOM estiver pronto
     setupImageModal();
+
+    // Função para atualizar textos da seção About
+    function updateAboutContent() {
+        const aboutContent = document.querySelector('.about-content');
+        if (aboutContent) {
+            aboutContent.innerHTML = `
+                <p>${translations[currentLang]['about-p1']}</p>
+                <p>${translations[currentLang]['about-p2']}</p>
+                <p>${translations[currentLang]['about-p3']}</p>
+            `;
+        }
+    }
+
+    function setLanguage(lang) {
+        currentLang = lang;
+        
+        // Atualiza textos do header
+        updateText('h1', 'welcome');
+        document.querySelectorAll('nav a').forEach(link => {
+            const key = link.getAttribute('href').replace('#', '');
+            link.textContent = translations[currentLang][key];
+        });
+
+        // Atualiza seção Sobre
+        updateText('#about h2', 'about-title');
+        updateAboutContent();
+
+        // Atualiza seção Projetos
+        updateText('#projects h2', 'projects-title');
+        document.querySelectorAll('.carousel-card a').forEach(link => {
+            link.textContent = translations[currentLang]['view-github'];
+        });
+
+        // Atualiza seção Contato
+        updateText('#contact h2', 'contact-title');
+        updateText('label[for="name"]', 'name-label');
+        updateText('label[for="email"]', 'email-label');
+        updateText('label[for="message"]', 'message-label');
+        updateText('.submit-btn', 'send-button');
+
+        // Atualiza seção de Idiomas
+        updateText('#languages h2', 'languages-title');
+        document.querySelectorAll('.language-card').forEach(card => {
+            const languageNameElement = card.querySelector('.language-name');
+            const languageLevelElement = card.querySelector('.language-level');
+            
+            if (languageNameElement) {
+                const langKey = languageNameElement.getAttribute('data-lang');
+                if (langKey) {
+                    languageNameElement.textContent = translations[currentLang][langKey];
+                }
+            }
+            
+            if (languageLevelElement) {
+                const levelKey = languageLevelElement.getAttribute('data-level');
+                if (levelKey) {
+                    languageLevelElement.textContent = translations[currentLang][levelKey];
+                }
+            }
+        });
+
+        // Atualiza footer
+        updateText('footer p', 'footer-text');
+    }
+
+    function updateText(selector, key) {
+        const element = document.querySelector(selector);
+        if (element) {
+            element.textContent = translations[currentLang][key];
+        }
+    }
 }); 
