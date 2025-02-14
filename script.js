@@ -188,7 +188,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Adicione isso após a inicialização do carousel
     function setupImageModal() {
         const modal = document.getElementById('imageModal');
-        // Verifica se o modal existe antes de continuar
         if (!modal) {
             console.warn('Modal não encontrado no DOM');
             return;
@@ -200,28 +199,26 @@ document.addEventListener('DOMContentLoaded', () => {
         const nextBtn = modal.querySelector('.modal-next');
         let currentImageIndex = 0;
 
-        // Verifica se os elementos necessários existem
-        if (!modalImg || !closeBtn || !prevBtn || !nextBtn) {
-            console.warn('Elementos do modal não encontrados');
-            return;
-        }
+        // Mudança aqui: usando a classe correta
+        const projectImages = document.querySelectorAll('.carousel-card img');
+        
+        // Debug para verificar se encontrou as imagens
+        console.log('Imagens encontradas:', projectImages.length);
 
-        // Adiciona click listener em todas as imagens dos cards
-        updatedCards.forEach((card, index) => {
-            const img = card.querySelector('img');
-            if (img) {
-                img.style.cursor = 'pointer';
-                img.addEventListener('click', () => {
-                    currentImageIndex = index;
-                    openModal(img.src);
-                });
-            }
+        projectImages.forEach((img, index) => {
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', () => {
+                console.log('Imagem clicada:', index);
+                currentImageIndex = index;
+                openModal(img.src);
+            });
         });
 
         function openModal(imgSrc) {
+            console.log('Abrindo modal com imagem:', imgSrc);
             modal.classList.add('show');
             modalImg.src = imgSrc;
-            document.body.style.overflow = 'hidden'; // Previne scroll
+            document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
@@ -230,47 +227,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function showNextImage() {
-            currentImageIndex = (currentImageIndex + 1) % updatedCards.length;
-            const nextImg = updatedCards[currentImageIndex].querySelector('img');
-            if (nextImg) {
-                modalImg.src = nextImg.src;
-            }
+            currentImageIndex = (currentImageIndex + 1) % projectImages.length;
+            modalImg.src = projectImages[currentImageIndex].src;
         }
 
         function showPrevImage() {
-            currentImageIndex = (currentImageIndex - 1 + updatedCards.length) % updatedCards.length;
-            const prevImg = updatedCards[currentImageIndex].querySelector('img');
-            if (prevImg) {
-                modalImg.src = prevImg.src;
-            }
+            currentImageIndex = (currentImageIndex - 1 + projectImages.length) % projectImages.length;
+            modalImg.src = projectImages[currentImageIndex].src;
         }
 
         // Event Listeners
         closeBtn.addEventListener('click', closeModal);
+        prevBtn.addEventListener('click', showPrevImage);
+        nextBtn.addEventListener('click', showNextImage);
+        
+        // Fechar com ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'ArrowRight') showNextImage();
+            if (e.key === 'ArrowLeft') showPrevImage();
+        });
+
+        // Fechar clicando fora da imagem
         modal.addEventListener('click', (e) => {
             if (e.target === modal) closeModal();
         });
-        prevBtn.addEventListener('click', showPrevImage);
-        nextBtn.addEventListener('click', showNextImage);
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (!modal.classList.contains('show')) return;
-            
-            switch(e.key) {
-                case 'Escape':
-                    closeModal();
-                    break;
-                case 'ArrowLeft':
-                    showPrevImage();
-                    break;
-                case 'ArrowRight':
-                    showNextImage();
-                    break;
-            }
-        });
     }
 
-    // Chama setupImageModal após a inicialização do carousel
-    setTimeout(setupImageModal, 100); // Pequeno delay para garantir que tudo está carregado
+    // Chama a função quando o DOM estiver pronto
+    setupImageModal();
 }); 
