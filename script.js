@@ -184,4 +184,81 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         updateCarousel(true);
     });
+
+    // Adicione isso após a inicialização do carousel
+    function setupImageModal() {
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeBtn = document.querySelector('.close-modal');
+        const prevBtn = document.querySelector('.modal-prev');
+        const nextBtn = document.querySelector('.modal-next');
+        let currentImageIndex = 0;
+
+        // Adiciona click listener em todas as imagens dos cards
+        updatedCards.forEach((card, index) => {
+            const img = card.querySelector('img');
+            if (img) {
+                img.style.cursor = 'pointer';
+                img.addEventListener('click', () => {
+                    currentImageIndex = index;
+                    openModal(img.src);
+                });
+            }
+        });
+
+        function openModal(imgSrc) {
+            modal.classList.add('show');
+            modalImg.src = imgSrc;
+            document.body.style.overflow = 'hidden'; // Previne scroll
+        }
+
+        function closeModal() {
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        function showNextImage() {
+            currentImageIndex = (currentImageIndex + 1) % updatedCards.length;
+            const nextImg = updatedCards[currentImageIndex].querySelector('img');
+            if (nextImg) {
+                modalImg.src = nextImg.src;
+            }
+        }
+
+        function showPrevImage() {
+            currentImageIndex = (currentImageIndex - 1 + updatedCards.length) % updatedCards.length;
+            const prevImg = updatedCards[currentImageIndex].querySelector('img');
+            if (prevImg) {
+                modalImg.src = prevImg.src;
+            }
+        }
+
+        // Event Listeners
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+        prevBtn.addEventListener('click', showPrevImage);
+        nextBtn.addEventListener('click', showNextImage);
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!modal.classList.contains('show')) return;
+            
+            switch(e.key) {
+                case 'Escape':
+                    closeModal();
+                    break;
+                case 'ArrowLeft':
+                    showPrevImage();
+                    break;
+                case 'ArrowRight':
+                    showNextImage();
+                    break;
+            }
+        });
+    }
+
+    // Chame a função após inicializar o carousel
+    setupImageModal();
 }); 
