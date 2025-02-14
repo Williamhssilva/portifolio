@@ -327,4 +327,23 @@ document.addEventListener('DOMContentLoaded', () => {
             element.textContent = translations[currentLang][key];
         }
     }
+
+    const backToTopButton = document.getElementById('backToTop');
+
+    // Mostrar/ocultar botão baseado na posição do scroll
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTopButton.classList.add('visible');
+        } else {
+            backToTopButton.classList.remove('visible');
+        }
+    });
+
+    // Ação de voltar ao topo
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
 }); 
