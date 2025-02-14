@@ -1,35 +1,3 @@
-function setLanguage(language) {
-    currentLang = language;
-    
-    // Atualiza textos do header
-    updateText('h1', 'welcome');
-    document.querySelectorAll('nav a').forEach(link => {
-        const key = link.getAttribute('href').replace('#', '');
-        link.textContent = translations[language][key];
-    });
-
-    // Atualiza seção Sobre
-    updateText('#about h2', 'about-title');
-    updateText('#about p:first-of-type', 'about-p1');
-    updateText('#about p:last-of-type', 'about-p2');
-
-    // Atualiza seção Projetos
-    updateText('#projects h2', 'projects-title');
-    document.querySelectorAll('.carousel-card a').forEach(link => {
-        link.textContent = translations[language]['view-github'];
-    });
-
-    // Atualiza seção Contato
-    updateText('#contact h2', 'contact-title');
-    updateText('label[for="name"]', 'name-label');
-    updateText('label[for="email"]', 'email-label');
-    updateText('label[for="message"]', 'message-label');
-    updateText('.submit-btn', 'send-button');
-
-    // Atualiza footer
-    updateText('footer p', 'footer-text');
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     const track = document.querySelector('.carousel-track');
     const cards = Array.from(track.children);
@@ -120,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateCarousel(instant = false) {
         currentTranslate = getPositionByIndex(currentIndex);
-        track.style.transition = instant ? 'none' : 'transform 0.3s ease-in-out';
+        track.style.transition = instant ? 'none' : 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
         track.style.transform = `translateX(${currentTranslate}px)`;
         
         updatedCards.forEach((card, index) => {
@@ -128,6 +96,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (index === currentIndex) {
                 card.classList.add('active');
             }
+            // Atualiza o conteúdo de cada card, incluindo os clones
+            updateCardContent(card, index);
         });
     }
 
@@ -206,5 +176,12 @@ document.addEventListener('DOMContentLoaded', () => {
         resizeTimeout = setTimeout(() => {
             updateCarousel(true);
         }, 100);
+    });
+
+    track.addEventListener('languagechange', () => {
+        updatedCards.forEach((card, index) => {
+            updateCardContent(card, index);
+        });
+        updateCarousel(true);
     });
 }); 

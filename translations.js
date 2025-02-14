@@ -113,19 +113,21 @@ function updateAriaLabel(selector, key) {
 function updateProjectsContent() {
     const projects = {
         'lolversus': document.querySelector('[aria-label="lolversus"]'),
-        'quizquest': document.querySelector('[aria-label="QuizQuest"]'),
+        'quizquest': document.querySelector('[aria-label="quizquest"]'),
         'autovideo': document.querySelector('[aria-label="autovideo"]'),
         'gamezero': document.querySelector('[aria-label="gamezero"]'),
-        'parcero': document.querySelector('[aria-label="Parcero Imóveis"]')
+        'parcero': document.querySelector('[aria-label="parcero"]')
     };
 
     Object.entries(projects).forEach(([key, element]) => {
         if (element) {
             const title = element.querySelector('h3');
             const description = element.querySelector('p');
+            const link = element.querySelector('a');
             
             if (title) title.textContent = translations[currentLang][`${key}-title`];
             if (description) description.textContent = translations[currentLang][`${key}-description`];
+            if (link) link.textContent = translations[currentLang]['view-github'];
         }
     });
 }
@@ -172,6 +174,18 @@ function setLanguage(lang) {
 
     // Atualiza conteúdo dos projetos
     updateProjectsContent();
+
+    // Força a atualização do carousel
+    const track = document.querySelector('.carousel-track');
+    if (track) {
+        const event = new Event('languagechange');
+        track.dispatchEvent(event);
+        
+        // Atualiza o carousel imediatamente
+        if (typeof updateCarousel === 'function') {
+            updateCarousel(true);
+        }
+    }
 }
 
 // Inicializa com o idioma padrão
