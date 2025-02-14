@@ -64,6 +64,8 @@ const translations = {
 
         // Skill Categories
         'skill-categories': {
+            'html': 'HTML',
+            'css': 'CSS',
             'javascript': 'Ecossistema JavaScript',
             'php': 'Ecossistema PHP',
             'python': 'Ecossistema Python',
@@ -140,6 +142,8 @@ const translations = {
 
         // Skill Categories
         'skill-categories': {
+            'html': 'HTML',
+            'css': 'CSS',
             'javascript': 'JavaScript Ecosystem',
             'php': 'PHP Ecosystem',
             'python': 'Python Ecosystem',
