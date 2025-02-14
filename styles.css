@@ -38,7 +38,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #ff4081;
+    color: #4a90e2;
 }
 
 .language-switcher {
@@ -101,7 +101,7 @@ nav ul li a:hover {
     border-radius: 50%;
     display: block;
     margin: 0 auto 20px;
-    border: 3px solid #ff4081;
+    border: 3px solid #4a90e2;
 }
 
 section img {
@@ -179,7 +179,7 @@ section img {
 .carousel-card h3 {
     font-size: 1.5em;
     margin-bottom: 10px;
-    color: #ff4081;
+    color: #4a90e2;
 }
 
 .carousel-card p {
@@ -191,7 +191,7 @@ section img {
 .carousel-card a {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #ff4081;
+    background-color: #4a90e2;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
@@ -199,7 +199,7 @@ section img {
 }
 
 .carousel-card a:hover {
-    background-color: #e03570;
+    background-color: #357abd;
 }
 
 .carousel-button {
@@ -525,13 +525,13 @@ section img {
 /* Melhorando contraste e estados de foco */
 a:focus,
 button:focus {
-    outline: 3px solid #ff4081;
+    outline: 3px solid #4a90e2;
     outline-offset: 2px;
 }
 
 /* Estados de foco para links de navegação */
 nav ul li a:focus {
-    outline: 3px solid #ff4081;
+    outline: 3px solid #4a90e2;
     outline-offset: 5px;
     border-radius: 2px;
 }
@@ -542,7 +542,7 @@ nav ul li a:focus {
     left: -9999px;
     z-index: 999;
     padding: 1em;
-    background-color: #ff4081;
+    background-color: #4a90e2;
     color: white;
     text-decoration: none;
 }
